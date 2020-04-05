@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+    <title>Chess AI</title>
+
+    <link href="css/main.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <div class="nav-full-line">
+    <div class="nav-container">
+      <a href="index.html"><h3>Home</h3></a>
+      <a href="projects.html"><h3>Projects</h3></a>
+      <a><h3>About</h3></a>
+    </div>
+    </div>
+
+    <div id="chess-back">
+    <div class="center-text large-font">
+    <h1 class="black-back">Chess AI</h1>
+    </div>
+
+
+    <h2 class="center-text black-back">Coded In C++</h2>
+    </div>
+
+    <div class="dark-back"></div>
+
+    <div class="img-default">
+    <img src="img/chess.gif" alt="Fish sim">
+    </div>
+
+    <div class="para">
+    <p>This is a text-based chess program with its own personal AI that versus the player.</p>
+    <p>The problem that this program tackled was how to create a functioning chess engine as chess is a very complex game with over 10^71 possible different states. With it being so complex how can one create a computer program to play it? This is what I wanted to learn and gain experience coding it.</p>
+    <p>This was done for fun and experience. The program was created using C++ in Visual Studio. This project was done individually and all the code was coded by me during July 2019.</p>
+    <p>The design goals were:</p>
+    <ol>
+    <li>Create the board.</li>
+    <li>Create the pieces and implement the rules.</li>
+    <li>Create a functioning AI (non- smart version that just moves pieces randomly if possible).</li>
+    <li>Research an optimal way to create a chess engine.</li>
+    <li>Implement engine.</li>
+    <li>Fine-tune engine.</li>
+    <li>Update UI.</li>
+    </ol>
+
+    </div>
+
+    <div class="img-text-container">
+    <div class="img-text-container-img">
+      <img src="img\chess.png" alt="Chess Gif">
+    </div>
+    <div class="img-text-container-text">
+      <h1>Create Board and Game Rules</h1>
+    <p>The first task was to create a game board and implement the rules of the game. I.e. a bishop can only move diagonally, or a piece cannot pass through another piece unless it is a knight. To do this, I created a 2D array of a Class. The class used was one that can contain the different chess pieces. I created the pieces as another class. I wanted to use the piece class as a form of checking if a move was valid or not, however I kept running into an issue with circular inclusion.</p>
+    <p>So, I ditched the idea of having it be calculated within a class and moved the valid move calculation into a standalone function. This worked extremely well and allowed me to finish the working basics of the game. </p>
+      </div>
+    </div>
+
+    <div class="dark-back"></div>
+
+    <div class="img-text-container">
+    <div class="img-text-container-text">
+      <h1>Creation of the AI</h1>
+    <p>I then created an AI that would create a list of possible moves by checking every possible move using the valid function. The AI would then pick a random one and play it. This was good as you could start to actually play against it, but it was super easy.​ </p>
+    <p>The next step was to update the working AI to where it is able to compete against the player to a competent degree.</p>
+    <p>Since I was not sure where to start on this, I did some research. I then found out that a good solution was to use an algorithm called minimax. This algorithm would allow the AI to look at all the possible moves for the next few turns and decide which move would have the best outcome for itself. I then implemented minimax into the code. However, there was something wrong with the implementation that I could not figure out.</p>
+    <p>For some reason the AI would most just move one piece back and forth or not output a move at all. After struggling with debugging the code for some hours, I decided to just re-write the minimax implementation. Initially I had wrote the implementation in a manner that it would find a possible move and then return how good of a move it was. I instead changed it to finding all the possible moves and then calculating value of each move afterwards.</p>
+    <p>This worked, however not recursively as it would reach a stack overflow very quickly. So, after getting a deeper understanding of the algorithm and using the new code as a base line, I re-wrote the minimax function again in the same method as originally and it functioned. However, it did occasionally still move back and forth but it still always outputted a valid move. I recognized that the issue was being caused by the fact the computer saw that moving the piece back and forth was equivalent in worth as claiming more territory this is because it won’t be able to claim a piece in the next couple of turns.</p>
+      </div>
+      <div class="img-text-container-img">
+
+        <img src="img\chess.png" alt="Chess Gif">
+      </div>
+    </div>
+
+    <div class="dark-back"></div>
+
+    <div class="img-text-container">
+    <div class="img-text-container-img">
+      <img src="img\PosEval.png" alt="Chess Gif">
+    </div>
+    <div class="img-text-container-text">
+      <h1>Resolution</h1>
+    <p>To solve this issue, I added a new method for the AI to evaluate the board. Originally the AI would determine the worth of a board position by how many pieces it has and how many the enemy has and adding up the total worth of those pieces (pawns worth 100, queens worth 900, etc).</p>
+    <p>To fix this I added, (on top of the previous calculation), a score to the piece depending on where the piece was on the board. For example, if a knight was in the corner of the board it got a score -50 as it is a bad position for the piece because it can only use 2 of it’s 8 possible moves.</p>
+    <p>After adding the new evaluation formula, the AI no longer moved pieces back and forth but fought for better board control instead.</p>
+      </div>
+    </div>
+
+    <div class="dark-back"></div>
+
+    <div class="img-text-container">
+    <div class="img-text-container-img">
+      <img src="img\chessF.png" alt="Chess Gif">
+    </div>
+    <div class="img-text-container-text">
+      <h1>Conclusion</h1>
+    <p>I considered the program complete at this point and just refreshed the UI a little bit. My only issue with the program is that it can be a little slow at times and that I could have made the calculations more time efficient and use less function references, arrays, and comparisons.</p>
+      <p>What I learnt from this is how algorithms can create intelligent AI, whether it be solving a maze or playing a game. I also learnt the usefulness of recursion statements in the computing world and how it can be simple yet complex. Another thing I learnt was the idea of foreplaning my projects and setting design goals to achieve as to aid me in the process of completing my programs.</p>
+      <p>Something I would do differently in the future would be to research and understand the algorithm or algorithms I will be using in a program before creating the base for the program. Because if I can understand how the algorithm works, I’ll be able to create a base program which can easily support it instead of changing the algorithm to support the base of the program which is far more complex.</p>
+      </div>
+    </div>
+
+    <div class="dark-back"></div>
+
+
+  </body>
+
+</html>

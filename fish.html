@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+    <title>Fish Simulation</title>
+
+    <link href="css/main.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <div class="nav-full-line">
+    <div class="nav-container">
+      <a href="index.html"><h3>Home</h3></a>
+      <a href="projects.html"><h3>Projects</h3></a>
+      <a><h3>About</h3></a>
+    </div>
+    </div>
+
+    <div id="fish-back">
+    <div class="center-text large-font">
+    <h1 class="black-back">FISH SIMULATION</h1>
+    </div>
+
+
+    <h2 class="center-text black-back">Coded In Java</h2>
+    </div>
+
+    <div class="dark-back"></div>
+
+    <div class="img-default">
+    <img src="img/fish.png" alt="Fish sim">
+    </div>
+
+    <div class="para">
+    <p>The goal is to create a predator and prey simulation using AI in java. It must include obstacles for them to avoid and a food source for the prey to eat and seek out. The prey must run away from the predators and the predators must chase the prey. The animals will have an energy meter which they must satisfy by eating. If their energy goes below a certain level, they will get sick and move slowly, if it reaches 0 they die. The animals cannot overlap. Must be able to add and remove food by clicking. Be able to select the animals to see their properties. Be able to change the quantity of animals.</p>
+    <p>This project was created individually for school in the fall of 2018. It was coded with Eclipse IDE using object-oriented programming techniques.</p>
+    <p>The design goals were:</p>
+    <ol>
+    <li>Create the frame, and an animal.</li>
+    <li>Add food for the animal to chase, also add the ability to add and remove food.</li>
+    <li>Add the energy and sickness feature to the prey and let them lose energy slowly over time.</li>
+    <li>Add the feature to not overlap with other animals and additional features.</li>
+    <li>Add predators which chase the prey. Also reformat the classes.</li>
+    <li>Add energy levels and sickness to the predators just like the prey. Have prey flee the predators. Also only make animals lose energy when moving.</li>
+    <li>Add a control panel for a user interface in the JPanel. Let the panel show and change specific stats of a selected animal. It will also allow the change of the max number of each type of animal in the simulation.</li>
+    <li>Finally, add the functionality that animals will not move unless hungry, to save energy. When hungry have them turn white. Add obstacles for the animals to move around.</li>
+    </ol>
+    <p>All code and art (except the background) were done by me.</p>
+    </div>
+
+    <div class="img-text-container">
+    <div class="img-text-container-img">
+      <img src="img\fishb1.gif" alt="Chess Gif">
+      <img src="img\fishb2.gif" alt="Chess Gif">
+    </div>
+    <div class="img-text-container-text">
+      <h1>Prey and Food Creation </h1>
+    <p>To start off this program I initially created a window using Jpanel and frame. I then created a class to create an animal to use as prey, which in my case was a fish. The fish class would draw the fish with random colors and update its movement.
+       The fish will automatically spawn in the center of the frame and then move in a random direction until it approaches a wall, which it will then turn away gradually. I did this just to start small and see how this program can develop from here. </p>
+    <p>I then added a new class to represent food for the prey in the form of a worm. The fish now locates the worm by calculating the angle between the two and turns towards it using an attraction force until it’s new hitbox collides with the food and consumes it. This was done so the fish can have a smooth turning effect and not just instantly spin around. Afterwards a new worm will spawn in another random location. Along with this I have added a new functionality where you can click to create a new worm and ctrl + click to remove one, this was created through a mouse adapter and listener.</p>
+      </div>
+    </div>
+
+    <div class="dark-back"></div>
+
+    <div class="img-text-container">
+    <div class="img-text-container-text">
+      <h1>Prey and Food Creation </h1>
+    <p>Afterwards I added a new functionality where if two fish’s hitboxes collide, the larger fish will push the smaller out of the way as this makes logical sense. The fish also now have an energy level in the sense of a private variable which gets decreased slowly over time. If the energy falls below a certain level, they then become sick and move at half their speed, they also turn pale. They replenish their energy by eating the worms. </p>
+    <p>I proceeded to create predators in the form of tiny orcas for the simulation as I felt it would fit the theme. They share the energy and sickness of the fish since I made the fish and orcas a subclass of a larger animal class. This way it is easy to distribute the functionality between the two classes and will make it easier to change if necessary. I then added a large circular hit box around the fish for the fish to use as sight. If the fish “see” a predator they will calculate the angle between the two and swim away. Also added the functionality that the energy level only decreases if the movement position is updated. Orcas will seek out and gain energy from eating a fish, just like a fish would with the worms.</p>
+      </div>
+      <div class="img-text-container-img">
+
+        <img src="img\fish.png" alt="Chess Gif">
+      </div>
+    </div>
+
+    <div class="dark-back"></div>
+    <div class="para">
+    <h1>User Interface Functionality</h1>
+    <p>I then to created a new class which extends the JPanel called controlPanel. This panel is the user interface, it was created using the gridBagLayout in Java. I used gridBagLayout as it seemed to be the best fit for my layout compared to the other layout functions. The sections will contain text fields to display the stats of a selected animal, the ability to change the maximum amount of animals, ability to add animals, the ability to give a selected animal more energy, and the ability to toggle how the predators will prioritize the fish. All of this will be done via buttons and changeable text fields.</p>
+    <p>Finally, I added the functionality that the prey will not move unless hungry, to save energy. When they are hungry I had them turn white, and transparent when sick. Lastly, I added obstacles for the animals to swim around. The animals will use their sight hitbox to see the obstacles, calculate this distance between them and apply a repulsion force until it is no longer in their way.</p>
+    </div>
+
+    <div class="dark-back"></div>
+
+    <div class="para">
+    <h1>Conclusion</h1>
+    <p>There weren’t any large issues within the creation of the project that completely stumped me. There were some issues however with calculation of angles and balancing the attraction forces of the food and the repulsion forces of the walls and predators. Another issue along with syntax errors was figuring out which layout to use for the UI but I found that the gridBagLayout worked the best in my case.</p>
+      <p>However, there are still a lot of attraction and repulsion force balancing issues between the predators, the obstacles, the food, the walls, and the collisions with other fish which sometimes leads fish to swim into obstacles, cause them to turn 180 degrees on the spot, or phase through other fish.</p>
+      <p>What I learnt from this project was a large portion of how Java functions and its syntax. I also learned more about the importance of having well commented code and the usefulness of object-oriented programming. The project also helped me realize my interest in artificial intelligence.</p>
+      <p>Somethings I would do differently in the future would be to test out the forces more before going large scale as it tends to magnify the flaws in the program.</p>
+    </div>
+    <div class="dark-back"></div>
+    <div class="img-default">
+    <img src="img/fishfinal.gif" alt="Fish sim">
+    </div>
+    <div class="dark-back"></div>
+
+
+  </body>
+
+</html>
