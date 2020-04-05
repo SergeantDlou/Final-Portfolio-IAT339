@@ -109,6 +109,26 @@ label{
   border-color: white;
 }
 
+.textbox-large{
+  width:40%;
+  height:10em;
+  color:white;
+  background-color: transparent;
+  padding:1em;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+}
+
+.center-box{
+  margin-left: 30%;
+  margin-right: 30%;
+}
+.center-button{
+  margin-left: 48%;
+  margin-right: 50%;
+}
+
 
 /*
   TEXT ELEMENTS -------------------
