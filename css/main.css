@@ -121,12 +121,12 @@ label{
 }
 
 .center-box{
-  margin-left: 30%;
-  margin-right: 30%;
+  margin-left: 28.5%;
+
 }
 .center-button{
-  margin-left: 48%;
-  margin-right: 50%;
+  margin-left: 47%;
+
 }
 
 
@@ -172,6 +172,34 @@ label{
 
   }
 }
+
+.img-text-container-img-index{
+  margin-top: 7em;
+  min-width:50%;
+
+
+
+}
+.img-text-container-img-index img{
+  margin-left: 20%;
+  max-width: 100%;
+  min-width: 60%;
+}
+
+@media(max-width: 800px) {
+  .img-text-container-img-index{
+    min-width:80%;
+    margin-left:12.5%;
+    margin-right: 12.5%;
+    margin-top: 3em;
+  }
+  .img-text-container-img-index img{
+    min-width:100%;
+    margin-left: 0%;
+
+  }
+}
+
 
 
 .img-text-container-text{
@@ -219,7 +247,9 @@ label{
   color:grey;
 }
 
-
+.nav-container a h3{
+  font-family: Helvetica,sans-serif;
+}
 
 
 
@@ -338,4 +368,8 @@ label{
 
 .footer-box a:active{
   color:grey;
+}
+
+.bolden{
+  font-weight: bold;
 }
