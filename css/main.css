@@ -314,11 +314,15 @@ label{
 
 #fish-back{
   background-image: url('../img/fish.png');
+
   margin: 0;
+  padding-top: 1em;
 }
 #chess-back{
-  background-image: url('../img/ChessCode.png');
+  background-image: url('../img/ChessF.png');
   margin: 0;
+  padding-top: 1em;
+  background-size: cover;
 }
 
 .img-default img{
